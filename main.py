@@ -60,29 +60,37 @@ while goAgain == 'Y' or goAgain == 'y': #while loop allows users to enter new zi
 		try:
 			givenzipCode = input('Enter a zipcode: ')
 			print('Loading weather info...\n')
+			blockPrint()
 			search = SearchEngine(simple_zipcode=True) # set simple_zipcode=False to use rich info database
 			zipcode = search.by_zipcode(givenzipCode)
-			
 			givenLat = str(zipcode.lat)
 			givenLng = str(zipcode.lng)
 
+			enablePrint()
 			output(givenLat,givenLng)
 			goAgain = input('\nTry another city/zipcode? (Y/N): ')
+			print('\n')
 		except IndexError: #handles if given zipcode doesn't exist
 			print('Could not find zipcode. Please try again with a different zipcode')
 			goAgain = input('\nTry another city/zipcode? (Y/N): ')
+			print('\n')
 	elif(choice == 'C'):
 		try:
 			givenName = input('Enter a city name: ')
 			print('Loading weather info...\n')
+			blockPrint()
 			search = SearchEngine(simple_zipcode=True) # set simple_zipcode=False to use rich info database
 			city = search.by_city(givenName)
 			zipcode = city[0]
 			givenLat = str(zipcode.lat)
 			givenLng = str(zipcode.lng)
-
+			
+			enablePrint()
+			print('Displaying weather forcast for ' + zipcode.major_city + ', ' + zipcode.state)
 			output(givenLat,givenLng)
 			goAgain = input('\nTry another city/zipcode? (Y/N): ')
+			print('\n')
 		except IndexError: #handles if given zipcode doesn't exist
 			print('Could not find zipcode. Please try again with a different zipcode')
 			goAgain = input('\nTry another city/zipcode? (Y/N): ')
+			print('\n')
