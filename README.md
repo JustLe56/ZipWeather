@@ -1,2 +1,2 @@
 # ZipWeather
-Program gives weather related information using zipcodes and webscraping
+Webscraper that uses United States zipcodes to find and locate accurate weather information
